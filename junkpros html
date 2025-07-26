@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Junk Pros | Professional Junk & Scrap Removal Services</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-bg {
+            background-color: #f8f4e5;
+            background-image: linear-gradient(rgba(248, 244, 229, 0.95), rgba(248, 244, 229, 0.95));
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        .service-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #9c6615;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .copper-text {
+            color: #9c6615;
+        }
+        
+        .copper-bg {
+            background-color: #9c6615;
+        }
+        
+        .rust-text {
+            color: #8B4513;
+        }
+        
+        .rust-bg {
+            background-color: #8B4513;
+        }
+        
+        .steampunk-shadow {
+            box-shadow: 0 4px 6px -1px rgba(139, 69, 19, 0.1), 0 2px 4px -1px rgba(139, 69, 19, 0.06);
+        }
+
+        .custom-button {
+            transition: all 0.3s ease;
+        }
+        
+        .custom-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-icon {
+            transition: transform 0.5s ease;
+        }
+        
+        .service-card:hover .service-icon {
+            transform: rotateY(180deg);
+        }
+
+        .vintage-border {
+            border: 2px solid #9c6615;
+            border-radius: 8px;
+        }
+
+        .tow-truck {
+            width: 100px;
+            height: 60px;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .tow-truck-body {
+            position: absolute;
+            width: 70px;
+            height: 25px;
+            background-color: #8B4513;
+            bottom: 10px;
+            left: 5px;
+            border-radius: 5px 10px 0 0;
+        }
+
+        .tow-truck-cabin {
+            position: absolute;
+            width: 25px;
+            height: 20px;
+            background-color: #8B4513;
+            bottom: 35px;
+            left: 10px;
+            border-radius: 3px;
+        }
+
+        .tow-truck-wheel {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: #333;
+            border-radius: 50%;
+            bottom: 0;
+        }
+
+        .wheel1 {
+            left: 15px;
+        }
+
+        .wheel2 {
+            left: 55px;
+        }
+
+        .tow-truck-arm {
+            position: absolute;
+            width: 40px;
+            height: 5px;
+            background-color: #8B4513;
+            bottom: 25px;
+            right: 0;
+            transform: rotate(-15deg);
+        }
+
+        .tow-truck-hook {
+            position: absolute;
+            width: 8px;
+            height: 15px;
+            border: 3px solid #8B4513;
+            border-top: none;
+            border-radius: 0 0 10px 10px;
+            right: 0;
+            bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-white py-4 px-6 shadow-md sticky top-0 z-50">
+        <div class="container mx-auto flex items-center justify-between">
+            <div class="flex items-center">
+                <div class="mr-2">
+                    <div class="tow-truck">
+                        <div class="tow-truck-body"></div>
+                        <div class="tow-truck-cabin"></div>
+                        <div class="tow-truck-wheel wheel1"></div>
+                        <div class="tow-truck-wheel wheel2"></div>
+                        <div class="tow-truck-arm"></div>
+                        <div class="tow-truck-hook"></div>
+                    </div>
+                </div>
+                <h1 class="text-3xl font-black copper-text">JUNK PROS</h1>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#services" class="nav-link font-medium py-2">Services</a>
+                <a href="#about" class="nav-link font-medium py-2">About Us</a>
+                <a href="#testimonials" class="nav-link font-medium py-2">Testimonials</a>
+                <a href="#contact" class="nav-link font-medium py-2">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button class="text-gray-600">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg py-20 min-h-screen flex items-center">
+        <div class="container mx-auto px-6">
+            <div class="md:flex items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0">
+                    <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">We Deal With The Junk You're Sick of Looking At</h1>
+                    <p class="text-xl mb-8">Professional, reliable junk removal with zero nonsense and plenty of references.</p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#services" class="custom-button text-center rust-bg text-white py-3 px-8 rounded-lg font-bold text-lg">Our Services</a>
+                        <a href="#contact" class="custom-button text-center border-2 border-gray-800 py-3 px-8 rounded-lg font-bold text-lg">Get A Quote</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 md:pl-12">
+                    <div class="vintage-border p-8 bg-white">
+                        <h3 class="text-2xl font-bold mb-4 rust-text">Sick of looking at that...</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle copper-text mt-1 mr-2"></i>
+                                <span>Junk car rotting in your yard?</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle copper-text mt-1 mr-2"></i>
+                                <span>Trash piling up because no one shows up when they say they will?</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle copper-text mt-1 mr-2"></i>
+                                <span>Car broke down and you're tired of waiting on a tow that never comes?</span>
+                            </li>
+                        </ul>
+                        <div class="mt-6 pt-4 border-t border-gray-200">
+                            <p class="font-bold text-lg">We get it. You're busy. You're tired. And you're over it.</p>
+                            <p class="mt-2">That's where we come in.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl font-bold mb-4">Our Services</h2>
+                <p class="text-xl max-w-2xl mx-auto">Professional junk removal services with guaranteed satisfaction. We show up on time, get the job done, and don't make excuses.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-white rounded-lg shadow-lg p-8 reveal">
+                    <div class="text-center mb-6">
+                        <span class="service-icon copper-bg text-white inline-flex items-center justify-center w-16 h-16 rounded-full mb-4">
+                            <i class="fas fa-trash-alt text-2xl"></i>
+                        </span>
+                        <h3 class="text-2xl font-bold">Trash & Scrap Removal</h3>
+                    </div>
+                    <p class="text-gray-600">From household junk to construction debris, we handle it all. No pile is too big or too messy for our professional team.</p>
+                    <ul class="mt-4 space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-arrow-right copper-text mr-2 text-sm"></i>
+                            <span>Household junk cleanup</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-arrow-right copper-text mr-2 text-sm"></i>
+                            <span>Construction debris removal</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-arrow-right copper-text mr-2 text-sm"></i>
+                            <span>Scrap metal recycling</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card bg-white rounded-lg shadow-lg p-8 reveal">
+                    <div class="text-center mb-6">
+                        <span class="service-icon copper-bg text-white inline-flex items-center justify-center w-16 h-16 rounded-full mb-4">
+                            <i class="fas fa-truck-pickup text-2xl"></i>
+                        </span>
+                        <h3 class="text-2xl font-bold">Car Hauling & Towing</h3>
+                    </div>
+                    <p class="text-gray-600">Reliable towing services when you need them. We show up when we say we will, guaranteed.</p>
+                    <ul class="mt-4 space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-arrow-right copper-text mr-2 text-sm"></i>
+                            <span>Emergency towing</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-arrow-right copper-text mr-2 text-sm"></i>
+                            <span>Junk car removal</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-arrow-right copper-text mr-2 text-sm"></i>
+                            <span>Long-distance hauling</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card bg-white rounded-lg shadow-lg p-8 reveal">
+                    <div class="text-center mb-6">
+                        <span class="service-icon copper-bg text-white inline-flex items-center justify-center w-16 h-16 rounded-full mb-4">
+                            <i class="fas fa-hammer text-2xl"></i>
+                        </span>
+                        <h3 class="text-2xl font-bold">Demolition Work</h3>
+                    </div>
+                    <p class="text-gray-600">Professional demolition services for small to medium projects. Safe, efficient, and thorough.</p>
+                    <ul class="mt-4 space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-arrow-right copper-text mr-2 text-sm"></i>
+                            <span>Shed & garage demolition</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-arrow-right copper-text mr-2 text-sm"></i>
+                            <span>Interior demolition</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-arrow-right copper-text mr-2 text-sm"></i>
+                            <span>Concrete removal</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card bg-white rounded-lg shadow-lg p-8 reveal">
+                    <div class="text-center mb-6">
+                        <span class="service-icon copper-bg text-white inline-flex items-center justify-center w-16 h-16 rounded-full mb-4">
+                            <i class="fas fa-toolbox text-2xl"></i>
+                        </span>
+                        <h3 class="text-2xl font-bold">General Labor</h3>
+                    </div>
+                    <p class="text-gray-600">Need an extra set of hands? Our team is available for general labor tasks of all kinds.</p>
+                    <ul class="mt-4 space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-arrow-right copper-text mr-2 text-sm"></i>
+                            <span>Heavy lifting & moving</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-arrow-right copper-text mr-2 text-sm"></i>
+                            <span>Property cleanouts</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-arrow-right copper-text mr-2 text-sm"></i>
+                            <span>Yard cleanup</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card bg-white rounded-lg shadow-lg p-8 reveal">
+                    <div class="text-center mb-6">
+                        <span class="service-icon copper-bg text-white inline-flex items-center justify-center w-16 h-16 rounded-full mb-4">
+                            <i class="fas fa-car text-2xl"></i>
+                        </span>
+                        <h3 class="text-2xl font-bold">We Buy Junk Cars</h3>
+                    </div>
+                    <p class="text-gray-600">Turn your old vehicles into cash. We buy junk cars, vans, and trucks in any condition.</p>
+                    <ul class="mt-4 space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-arrow-right copper-text mr-2 text-sm"></i>
+                            <span>Free towing included</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-arrow-right copper-text mr-2 text-sm"></i>
+                            <span>Immediate cash payment</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-arrow-right copper-text mr-2 text-sm"></i>
+                            <span>Any condition accepted</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card bg-white rounded-lg shadow-lg p-8 reveal">
+                    <div class="text-center mb-6">
+                        <span class="service-icon copper-bg text-white inline-flex items-center justify-center w-16 h-16 rounded-full mb-4">
+                            <i class="fas fa-recycle text-2xl"></i>
+                        </span>
+                        <h3 class="text-2xl font-bold">Parts & Recycling</h3>
+                    </div>
+                    <p class="text-gray-600">We buy batteries and catalytic converters. Responsible recycling with fair prices paid.</p>
+                    <ul class="mt-4 space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-arrow-right copper-text mr-2 text-sm"></i>
+                            <span>Vehicle batteries</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-arrow-right copper-text mr-2 text-sm"></i>
+                            <span>Catalytic converters</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-arrow-right copper-text mr-2 text-sm"></i>
+                            <span>Scrap metal recycling</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="md:flex items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0 reveal">
+                    <div class="vintage-border p-8 bg-gray-100 steampunk-shadow">
+                        <h2 class="text-3xl font-bold mb-6 rust-text">Why Choose Junk Pros?</h2>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="copper-bg text-white rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-xl mb-2">We Show Up On Time</h3>
+                                    <p>No more waiting around for service providers who never arrive. When we set an appointment, we're there.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="copper-bg text-white rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-check-double"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-xl mb-2">We Get The Job Done</h3>
+                                    <p>No halfway solutions or incomplete work. We thoroughly complete every job to your satisfaction.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="copper-bg text-white rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-ban"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-xl mb-2">We Don't Make Excuses</h3>
+                                    <p>Professional service means taking responsibility. No excuses, just results.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 md:pl-12 reveal">
+                    <h2 class="text-4xl font-bold mb-6">Professional. Reliable.<br>Not here to waste your time.</h2>
+                    <p class="text-lg mb-6">At Junk Pros, we understand the frustration of dealing with unreliable service providers. That's why we've built our business on the principles of professionalism, reliability, and straightforward service.</p>
+                    <p class="text-lg mb-6">Whether you need junk removal, car towing, or demolition work, we handle it all with the same level of dedication and professionalism.</p>
+                    <div class="p-6 bg-gray-100 rounded-lg border-l-4 copper-bg">
+                        <p class="text-xl font-bold">Zero nonsense. Plenty of references.</p>
+                        <p class="mt-2">We let our work and our satisfied customers speak for us.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl font-bold mb-4">What Our Customers Say</h2>
+                <p class="text-xl max-w-2xl mx-auto">Don't take our word for it. Here's what our satisfied customers have to say about our services.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg reveal">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 flex">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="ml-2 text-gray-600">5.0</span>
+                    </div>
+                    <p class="text-gray-600 mb-6">"Called Junk Pros to remove an old shed that was falling apart. They showed up exactly when they said they would, demolished it safely, and cleaned up everything afterward. Couldn't ask for better service."</p>
+                    <div class="border-t pt-4">
+                        <p class="font-bold">Michael T.</p>
+                        <p class="text-sm text-gray-500">Athens, GA</p>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg reveal">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 flex">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="ml-2 text-gray-600">5.0</span>
+                    </div>
+                    <p class="text-gray-600 mb-6">"I had a junk car sitting in my yard for years. Called multiple companies that never showed up. Junk Pros came out the same day I called, gave me cash for my car, and towed it away. These guys are the real deal."</p>
+                    <div class="border-t pt-4">
+                        <p class="font-bold">Sarah W.</p>
+                        <p class="text-sm text-gray-500">Madison, GA</p>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg reveal">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 flex">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="ml-2 text-gray-600">4.5</span>
+                    </div>
+                    <p class="text-gray-600 mb-6">"Had a huge pile of construction debris after a renovation project. John and his team removed everything quickly and efficiently. Fair price and excellent service. Will definitely call them again."</p>
+                    <div class="border-t pt-4">
+                        <p class="font-bold">Robert J.</p>
+                        <p class="text-sm text-gray-500">Commerce, GA</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="md:flex items-start">
+                <div class="md:w-1/2 mb-12 md:mb-0 reveal">
+                    <h2 class="text-4xl font-bold mb-6">Contact Us</h2>
+                    <p class="text-lg mb-8">Ready to get rid of that junk? We're here to help. Fill out the form or call us directly.</p>
+                    
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-bold mb-4 copper-text">Call or Message</h3>
+                        <div class="flex items-center mb-4">
+                            <div class="copper-bg text-white rounded-full w-10 h-10 flex items-center justify-center mr-4">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-600">Call us directly:</p>
+                                <a href="tel:7069340080" class="text-xl font-bold">(706) 934-0080</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-100 p-6 rounded-lg">
+                        <h3 class="text-xl font-bold mb-4">Our Promise</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle copper-text mt-1 mr-3"></i>
+                                <span>We show up on time</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle copper-text mt-1 mr-3"></i>
+                                <span>We get the job done</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle copper-text mt-1 mr-3"></i>
+                                <span>We don't make excuses</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle copper-text mt-1 mr-3"></i>
+                                <span>Plenty of references</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle copper-text mt-1 mr-3"></i>
+                                <span>Zero nonsense</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 md:pl-12 reveal">
+                    <div class="bg-white p-8 rounded-lg shadow-lg vintage-border">
+                        <h3 class="text-2xl font-bold mb-6 text-center">Get A Free Quote</h3>
+                        <form>
+                            <div class="mb-6">
+                                <label class="block text-gray-700 font-medium mb-2" for="name">Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-copper-300" placeholder="Your name">
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label class="block text-gray-700 font-medium mb-2" for="phone">Phone Number</label>
+                                <input type="tel" id="phone" class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-copper-300" placeholder="Your phone number">
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label class="block text-gray-700 font-medium mb-2" for="service">Service Needed</label>
+                                <select id="service" class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-copper-300">
+                                    <option value="" disabled selected>Select a service</option>
+                                    <option value="trash">Trash & Scrap Removal</option>
+                                    <option value="towing">Car Hauling & Towing</option>
+                                    <option value="demolition">Demolition Work</option>
+                                    <option value="labor">General Labor</option>
+                                    <option value="junkcar">Sell Junk Car</option>
+                                    <option value="parts">Sell Parts (Battery/Catalytic)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label class="block text-gray-700 font-medium mb-2" for="message">Details</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-copper-300" placeholder="Tell us about your junk removal needs"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="custom-button w-full rust-bg text-white py-3 px-6 rounded-lg font-bold text-lg">Get Your Quote</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+                <p class="text-xl max-w-2xl mx-auto">Common questions about our services and how we work.</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="mb-6 bg-white rounded-lg shadow-md p-6 reveal">
+                    <h3 class="text-xl font-bold mb-3">How quickly can you respond to a request?</h3>
+                    <p>In most cases, we can provide same-day or next-day service. For emergency towing, we prioritize quick response times.</p>
+                </div>
+                
+                <div class="mb-6 bg-white rounded-lg shadow-md p-6 reveal">
+                    <h3 class="text-xl font-bold mb-3">Do you provide free estimates?</h3>
+                    <p>Yes, we provide free estimates for all our services. Contact us by phone or fill out our form to get a quote.</p>
+                </div>
+                
+                <div class="mb-6 bg-white rounded-lg shadow-md p-6 reveal">
+                    <h3 class="text-xl font-bold mb-3">What areas do you service?</h3>
+                    <p>We primarily serve the greater Athens area, including Madison, Commerce, and surrounding communities in Georgia.</p>
+                </div>
+                
+                <div class="mb-6 bg-white rounded-lg shadow-md p-6 reveal">
+                    <h3 class="text-xl font-bold mb-3">How much do you pay for junk cars?</h3>
+                    <p>The amount we pay for junk cars varies depending on the vehicle's condition, make, model, and current scrap metal prices. Call us for a quick quote on your specific vehicle.</p>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-6 reveal">
+                    <h3 class="text-xl font-bold mb-3">What forms of payment do you accept?</h3>
+                    <p>We accept cash and major credit/debit cards for our services. For junk car and parts purchases, we typically pay in cash.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 copper-bg">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">Ready to get rid of that junk?</h2>
+            <p class="text-xl mb-8 text-white opacity-90">Professional, reliable service is just a phone call away.</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="tel:7069340080" class="custom-button bg-white text-gray-900 py-3 px-8 rounded-lg font-bold text-lg">
+                    <i class="fas fa-phone-alt mr-2"></i> Call (706) 934-0080
+                </a>
+                <a href="#contact" class="custom-button border-2 border-white text-white py-3 px-8 rounded-lg font-bold text-lg">Get A Quote Online</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="md:flex md:justify-between">
+                <div class="mb-8 md:mb-0">
+                    <div class="flex items-center mb-4">
+                        <div class="mr-2">
+                            <div class="tow-truck" style="filter: brightness(0) invert(1);">
+                                <div class="tow-truck-body"></div>
+                                <div class="tow-truck-cabin"></div>
+                                <div class="tow-truck-wheel wheel1"></div>
+                                <div class="tow-truck-wheel wheel2"></div>
+                                <div class="tow-truck-arm"></div>
+                                <div class="tow-truck-hook"></div>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold">JUNK PROS</h3>
+                    </div>
+                    <p class="text-gray-400 max-w-xs">Professional junk removal services. We deal with the junk you're sick of looking at.</p>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h4 class="text-lg font-bold mb-4">Services</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#services" class="text-gray-400 hover:text-white">Trash Removal</a></li>
+                            <li><a href="#services" class="text-gray-400 hover:text-white">Car Hauling</a></li>
+                            <li><a href="#services" class="text-gray-400 hover:text-white">Demolition Work</a></li>
+                            <li><a href="#services" class="text-gray-400 hover:text-white">General Labor</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-bold mb-4">Company</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#about" class="text-gray-400 hover:text-white">About Us</a></li>
+                            <li><a href="#testimonials" class="text-gray-400 hover:text-white">Testimonials</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="col-span-2 md:col-span-1">
+                        <h4 class="text-lg font-bold mb-4">Contact</h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <i class="fas fa-phone-alt mr-2 text-sm"></i>
+                                <a href="tel:7069340080" class="text-gray-400 hover:text-white">(706) 934-0080</a>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-envelope mr-2 text-sm"></i>
+                                <a href="mailto:contact@junkpros.com" class="text-gray-400 hover:text-white">contact@junkpros.com</a>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-map-marker-alt mr-2 text-sm"></i>
+                                <span class="text-gray-400">Athens, GA and surrounding areas</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row md:justify-between">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2023 Junk Pros. All rights reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-google"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Reveal animations on scroll
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const revealTop = reveals[i].getBoundingClientRect().top;
+                const revealPoint = 50;
+                
+                if (revealTop < windowHeight - revealPoint) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
