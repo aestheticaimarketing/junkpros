@@ -18,7 +18,28 @@
         
         .hero-bg {
             background-color: #f8f4e5;
-            background-image: linear-gradient(rgba(248, 244, 229, 0.95), rgba(248, 244, 229, 0.95));
+            background-image: linear-gradient(rgba(248, 244, 229, 0.95), rgba(248, 244, 229, 0.95)), 
+                              radial-gradient(circle at top right, rgba(156, 102, 21, 0.08), rgba(248, 244, 229, 0) 70%),
+                              radial-gradient(circle at bottom left, rgba(139, 69, 19, 0.08), rgba(248, 244, 229, 0) 70%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%239C6615' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E") repeat;
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        .hero-bg > div {
+            position: relative;
+            z-index: 1;
         }
         
         h1, h2, h3, h4, h5, h6 {
@@ -27,16 +48,20 @@
         }
         
         .service-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(0,0,0,0.05);
         }
         
         .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 15px 30px -10px rgba(156, 102, 21, 0.15), 
+                        0 10px 20px -10px rgba(0, 0, 0, 0.1);
+            border-color: rgba(156, 102, 21, 0.2);
         }
         
         .nav-link {
             position: relative;
+            transition: color 0.3s ease;
         }
         
         .nav-link::after {
@@ -46,8 +71,13 @@
             height: 2px;
             bottom: 0;
             left: 0;
-            background-color: #9c6615;
-            transition: width 0.3s ease;
+            background: linear-gradient(90deg, #9c6615, #b27d2d);
+            transition: width 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+            box-shadow: 0 1px 2px rgba(156, 102, 21, 0.3);
+        }
+        
+        .nav-link:hover {
+            color: #9c6615;
         }
         
         .nav-link:hover::after {
@@ -56,36 +86,69 @@
         
         .copper-text {
             color: #9c6615;
+            text-shadow: 0 1px 1px rgba(0,0,0,0.1);
         }
         
         .copper-bg {
-            background-color: #9c6615;
+            background: linear-gradient(135deg, #9c6615, #b27d2d);
+            box-shadow: 0 4px 6px -1px rgba(156, 102, 21, 0.3), 
+                        0 2px 4px -1px rgba(156, 102, 21, 0.2);
         }
         
         .rust-text {
             color: #8B4513;
+            text-shadow: 0 1px 1px rgba(0,0,0,0.1);
         }
         
         .rust-bg {
-            background-color: #8B4513;
+            background: linear-gradient(135deg, #8B4513, #a05a1c);
+            box-shadow: 0 4px 8px -2px rgba(139, 69, 19, 0.4), 
+                        0 2px 4px -1px rgba(139, 69, 19, 0.2);
         }
         
         .steampunk-shadow {
-            box-shadow: 0 4px 6px -1px rgba(139, 69, 19, 0.1), 0 2px 4px -1px rgba(139, 69, 19, 0.06);
+            box-shadow: 0 6px 12px -2px rgba(139, 69, 19, 0.15), 
+                        0 3px 7px -3px rgba(139, 69, 19, 0.1);
         }
 
         .custom-button {
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .custom-button:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                        rgba(255,255,255,0) 0%, 
+                        rgba(255,255,255,0.2) 50%, 
+                        rgba(255,255,255,0) 100%);
+            transition: all 0.6s ease;
         }
         
         .custom-button:hover {
-            transform: translateY(-2px);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 7px 14px rgba(0,0,0,0.15), 
+                        0 5px 5px rgba(0,0,0,0.12);
+        }
+        
+        .custom-button:hover:before {
+            left: 100%;
+        }
+        
+        .custom-button:active {
+            transform: translateY(1px) scale(0.99);
         }
 
         .reveal {
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
         }
         
         .reveal.active {
@@ -94,16 +157,48 @@
         }
 
         .service-icon {
-            transition: transform 0.5s ease;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
         }
         
         .service-card:hover .service-icon {
             transform: rotateY(180deg);
         }
+        
+        .service-icon:after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .service-card:hover .service-icon:after {
+            opacity: 1;
+        }
 
         .vintage-border {
             border: 2px solid #9c6615;
-            border-radius: 8px;
+            box-shadow: 0 6px 12px -4px rgba(156, 102, 21, 0.25),
+                        inset 0 2px 4px -2px rgba(156, 102, 21, 0.1);
+            position: relative;
+        }
+        
+        .vintage-border:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 1px solid rgba(156, 102, 21, 0.5);
+            border-radius: 7px;
+            pointer-events: none;
         }
 
         .tow-truck {
@@ -111,35 +206,50 @@
             height: 60px;
             position: relative;
             margin: 0 auto;
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease;
+        }
+        
+        nav:hover .tow-truck {
+            transform: scale(1.05);
         }
 
         .tow-truck-body {
             position: absolute;
             width: 70px;
             height: 25px;
-            background-color: #8B4513;
+            background: linear-gradient(to bottom, #8B4513, #a05a1c);
             bottom: 10px;
             left: 5px;
             border-radius: 5px 10px 0 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         .tow-truck-cabin {
             position: absolute;
             width: 25px;
             height: 20px;
-            background-color: #8B4513;
+            background: linear-gradient(to bottom, #8B4513, #724010);
             bottom: 35px;
             left: 10px;
             border-radius: 3px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         .tow-truck-wheel {
             position: absolute;
             width: 15px;
             height: 15px;
-            background-color: #333;
+            background: radial-gradient(circle, #333 60%, #111 100%);
             border-radius: 50%;
             bottom: 0;
+            box-shadow: inset 0 -1px 2px rgba(255,255,255,0.4), 0 2px 3px rgba(0,0,0,0.3);
+            animation: wheel-spin 3s linear infinite;
+        }
+        
+        @keyframes wheel-spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .wheel1 {
@@ -154,10 +264,11 @@
             position: absolute;
             width: 40px;
             height: 5px;
-            background-color: #8B4513;
+            background: linear-gradient(to bottom, #8B4513, #724010);
             bottom: 25px;
             right: 0;
             transform: rotate(-15deg);
+            box-shadow: 0 2px 3px rgba(0,0,0,0.2);
         }
 
         .tow-truck-hook {
@@ -169,10 +280,264 @@
             border-radius: 0 0 10px 10px;
             right: 0;
             bottom: 10px;
+            box-shadow: 0 2px 3px rgba(0,0,0,0.2);
+        }
+        
+        /* Enhanced form styles */
+        input, select, textarea {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(156, 102, 21, 0.2);
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #9c6615;
+            box-shadow: 0 0 0 3px rgba(156, 102, 21, 0.2);
+        }
+        
+        .form-field {
+            transition: all 0.5s ease;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            margin: 0;
+        }
+        
+        .form-field.active {
+            max-height: 500px;
+            opacity: 1;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Service button styles */
+        .service-btn {
+            background: linear-gradient(135deg, #9c6615, #b27d2d);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            margin-top: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(156, 102, 21, 0.3), 
+                        0 2px 4px -1px rgba(156, 102, 21, 0.2);
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .service-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 7px 14px rgba(156, 102, 21, 0.25), 
+                        0 5px 5px rgba(0,0,0,0.15);
+        }
+        
+        .service-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                        rgba(255,255,255,0) 0%, 
+                        rgba(255,255,255,0.2) 50%, 
+                        rgba(255,255,255,0) 100%);
+            transition: all 0.6s ease;
+        }
+        
+        .service-btn:hover:before {
+            left: 100%;
+        }
+        
+        .service-btn:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+        }
+        
+        /* Testimonial card enhanced */
+        .testimonial-card {
+            transition: all 0.4s ease;
+            border: 1px solid rgba(156, 102, 21, 0.1);
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(156, 102, 21, 0.1), 
+                        0 6px 6px rgba(0,0,0,0.1);
+            border-color: rgba(156, 102, 21, 0.2);
+        }
+        
+        /* FAQ items enhanced */
+        .faq-item {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .faq-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(156, 102, 21, 0.1);
+            border-color: rgba(156, 102, 21, 0.15);
+        }
+        
+        /* Brand list styles */
+        .brand-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .brand-item {
+            background: rgba(156, 102, 21, 0.1);
+            padding: 0.3rem 0.6rem;
+            border-radius: 0.25rem;
+            font-size: 0.8rem;
+            transition: all 0.2s ease;
+        }
+        
+        .brand-item:hover {
+            background: rgba(156, 102, 21, 0.2);
+            transform: scale(1.05);
+        }
+        
+        /* Loading animation */
+        .page-transition {
+            opacity: 0;
+            animation: fadeIn 1.5s forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Enhanced scroll animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .float-animation {
+            animation: float 5s ease-in-out infinite;
+        }
+        
+        /* Parallax effect */
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        /* Call to action enhanced */
+        .cta-section {
+            background: linear-gradient(135deg, #9c6615, #b27d2d);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+            z-index: 0;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Enhanced responsive behavior */
+        @media (max-width: 768px) {
+            .service-card {
+                margin-bottom: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2.5rem !important;
+            }
+        }
+        
+        /* Car brands dropdown */
+        #carBrands {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        #carYear option {
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        /* Enhanced mobile menu */
+        .mobile-menu {
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            transform: translateX(100%);
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 250px;
+            background: white;
+            z-index: 100;
+            padding: 2rem;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 99;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .menu-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
         }
     </style>
 </head>
-<body>
+<body class="page-transition">
+    <!-- Mobile Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="flex justify-between items-center mb-6">
+            <h3 class="text-2xl font-bold copper-text">Menu</h3>
+            <button id="closeMenu" class="text-gray-600 text-2xl">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="flex flex-col space-y-4">
+            <a href="#services" class="font-medium py-2 border-b border-gray-200">Services</a>
+            <a href="#about" class="font-medium py-2 border-b border-gray-200">About Us</a>
+            <a href="#testimonials" class="font-medium py-2 border-b border-gray-200">Testimonials</a>
+            <a href="#contact" class="font-medium py-2 border-b border-gray-200">Contact</a>
+            <a href="tel:7069340080" class="custom-button text-center rust-bg text-white py-3 px-6 rounded-lg font-bold text-lg mt-4">
+                <i class="fas fa-phone-alt mr-2"></i> Call Now
+            </a>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="bg-white py-4 px-6 shadow-md sticky top-0 z-50">
         <div class="container mx-auto flex items-center justify-between">
@@ -196,7 +561,7 @@
                 <a href="#contact" class="nav-link font-medium py-2">Contact</a>
             </div>
             <div class="md:hidden">
-                <button class="text-gray-600">
+                <button id="menuButton" class="text-gray-600">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
@@ -216,7 +581,7 @@
                     </div>
                 </div>
                 <div class="md:w-1/2 md:pl-12">
-                    <div class="vintage-border p-8 bg-white">
+                    <div class="vintage-border p-8 bg-white float-animation">
                         <h3 class="text-2xl font-bold mb-4 rust-text">Sick of looking at that...</h3>
                         <ul class="space-y-3">
                             <li class="flex items-start">
@@ -274,6 +639,9 @@
                             <span>Scrap metal recycling</span>
                         </li>
                     </ul>
+                    <div class="mt-6 text-center">
+                        <a href="#contact" class="service-btn" onclick="selectService('trash')">Request This Service</a>
+                    </div>
                 </div>
                 
                 <!-- Service 2 -->
@@ -299,6 +667,9 @@
                             <span>Long-distance hauling</span>
                         </li>
                     </ul>
+                    <div class="mt-6 text-center">
+                        <a href="#contact" class="service-btn" onclick="selectService('towing')">Request This Service</a>
+                    </div>
                 </div>
                 
                 <!-- Service 3 -->
@@ -324,6 +695,9 @@
                             <span>Concrete removal</span>
                         </li>
                     </ul>
+                    <div class="mt-6 text-center">
+                        <a href="#contact" class="service-btn" onclick="selectService('demolition')">Request This Service</a>
+                    </div>
                 </div>
                 
                 <!-- Service 4 -->
@@ -349,6 +723,9 @@
                             <span>Yard cleanup</span>
                         </li>
                     </ul>
+                    <div class="mt-6 text-center">
+                        <a href="#contact" class="service-btn" onclick="selectService('labor')">Request This Service</a>
+                    </div>
                 </div>
                 
                 <!-- Service 5 -->
@@ -374,6 +751,17 @@
                             <span>Any condition accepted</span>
                         </li>
                     </ul>
+                    <p class="mt-2 text-sm font-medium copper-text">We Accept All Brands:</p>
+                    <div class="brand-list">
+                        <span class="brand-item">Ford</span>
+                        <span class="brand-item">Toyota</span>
+                        <span class="brand-item">Honda</span>
+                        <span class="brand-item">Chevy</span>
+                        <span class="brand-item">More...</span>
+                    </div>
+                    <div class="mt-6 text-center">
+                        <a href="#contact" class="service-btn" onclick="selectService('junkcar')">Sell Your Car</a>
+                    </div>
                 </div>
                 
                 <!-- Service 6 -->
@@ -399,6 +787,9 @@
                             <span>Scrap metal recycling</span>
                         </li>
                     </ul>
+                    <div class="mt-6 text-center">
+                        <a href="#contact" class="service-btn" onclick="selectService('parts')">Request This Service</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -456,7 +847,7 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="py-20 bg-gray-100">
+    <section id="testimonials" class="py-20 bg-gray-100 parallax">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16 reveal">
                 <h2 class="text-4xl font-bold mb-4">What Our Customers Say</h2>
@@ -465,7 +856,7 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Testimonial 1 -->
-                <div class="bg-white p-8 rounded-lg shadow-lg reveal">
+                <div class="testimonial-card bg-white p-8 rounded-lg shadow-lg reveal">
                     <div class="flex items-center mb-4">
                         <div class="text-yellow-400 flex">
                             <i class="fas fa-star"></i>
@@ -484,7 +875,7 @@
                 </div>
                 
                 <!-- Testimonial 2 -->
-                <div class="bg-white p-8 rounded-lg shadow-lg reveal">
+                <div class="testimonial-card bg-white p-8 rounded-lg shadow-lg reveal">
                     <div class="flex items-center mb-4">
                         <div class="text-yellow-400 flex">
                             <i class="fas fa-star"></i>
@@ -503,7 +894,7 @@
                 </div>
                 
                 <!-- Testimonial 3 -->
-                <div class="bg-white p-8 rounded-lg shadow-lg reveal">
+                <div class="testimonial-card bg-white p-8 rounded-lg shadow-lg reveal">
                     <div class="flex items-center mb-4">
                         <div class="text-yellow-400 flex">
                             <i class="fas fa-star"></i>
@@ -540,12 +931,12 @@
                             </div>
                             <div>
                                 <p class="text-gray-600">Call us directly:</p>
-                                <a href="tel:7069340080" class="text-xl font-bold">(706) 934-0080</a>
+                                <a href="tel:7069340080" class="text-xl font-bold hover:text-copper-text transition-colors">(706) 934-0080</a>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="bg-gray-100 p-6 rounded-lg">
+                    <div class="bg-gray-100 p-6 rounded-lg vintage-border">
                         <h3 class="text-xl font-bold mb-4">Our Promise</h3>
                         <ul class="space-y-3">
                             <li class="flex items-start">
@@ -575,7 +966,7 @@
                 <div class="md:w-1/2 md:pl-12 reveal">
                     <div class="bg-white p-8 rounded-lg shadow-lg vintage-border">
                         <h3 class="text-2xl font-bold mb-6 text-center">Get A Free Quote</h3>
-                        <form>
+                        <form id="contactForm">
                             <div class="mb-6">
                                 <label class="block text-gray-700 font-medium mb-2" for="name">Name</label>
                                 <input type="text" id="name" class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-copper-300" placeholder="Your name">
@@ -597,6 +988,130 @@
                                     <option value="junkcar">Sell Junk Car</option>
                                     <option value="parts">Sell Parts (Battery/Catalytic)</option>
                                 </select>
+                            </div>
+                            
+                            <!-- Car information fields - hidden initially -->
+                            <div id="carBrandField" class="form-field mb-6">
+                                <label class="block text-gray-700 font-medium mb-2" for="carBrand">Car Brand</label>
+                                <select id="carBrand" class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-copper-300">
+                                    <option value="" disabled selected>Select a brand</option>
+                                    <option value="Acura">Acura</option>
+                                    <option value="Alfa Romeo">Alfa Romeo</option>
+                                    <option value="Audi">Audi</option>
+                                    <option value="BMW">BMW</option>
+                                    <option value="Buick">Buick</option>
+                                    <option value="Cadillac">Cadillac</option>
+                                    <option value="Chevrolet">Chevrolet</option>
+                                    <option value="Chrysler">Chrysler</option>
+                                    <option value="Dodge">Dodge</option>
+                                    <option value="Ferrari">Ferrari</option>
+                                    <option value="Fiat">Fiat</option>
+                                    <option value="Ford">Ford</option>
+                                    <option value="Genesis">Genesis</option>
+                                    <option value="GMC">GMC</option>
+                                    <option value="Honda">Honda</option>
+                                    <option value="Hyundai">Hyundai</option>
+                                    <option value="Infiniti">Infiniti</option>
+                                    <option value="Jaguar">Jaguar</option>
+                                    <option value="Jeep">Jeep</option>
+                                    <option value="Kia">Kia</option>
+                                    <option value="Lamborghini">Lamborghini</option>
+                                    <option value="Land Rover">Land Rover</option>
+                                    <option value="Lexus">Lexus</option>
+                                    <option value="Lincoln">Lincoln</option>
+                                    <option value="Maserati">Maserati</option>
+                                    <option value="Mazda">Mazda</option>
+                                    <option value="Mercedes-Benz">Mercedes-Benz</option>
+                                    <option value="Mercury">Mercury</option>
+                                    <option value="Mini">Mini</option>
+                                    <option value="Mitsubishi">Mitsubishi</option>
+                                    <option value="Nissan">Nissan</option>
+                                    <option value="Pontiac">Pontiac</option>
+                                    <option value="Porsche">Porsche</option>
+                                    <option value="Ram">Ram</option>
+                                    <option value="Saab">Saab</option>
+                                    <option value="Saturn">Saturn</option>
+                                    <option value="Subaru">Subaru</option>
+                                    <option value="Tesla">Tesla</option>
+                                    <option value="Toyota">Toyota</option>
+                                    <option value="Volkswagen">Volkswagen</option>
+                                    <option value="Volvo">Volvo</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div id="carModelField" class="form-field mb-6">
+                                <label class="block text-gray-700 font-medium mb-2" for="carModel">Car Model</label>
+                                <input type="text" id="carModel" class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-copper-300" placeholder="Enter car model">
+                            </div>
+                            
+                            <div id="carYearField" class="form-field mb-6">
+                                <label class="block text-gray-700 font-medium mb-2" for="carYear">Car Year</label>
+                                <select id="carYear" class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-copper-300">
+                                    <option value="" disabled selected>Select year</option>
+                                    <option value="2025">2025</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2021">2021</option>
+                                    <option value="2020">2020</option>
+                                    <option value="2019">2019</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2016">2016</option>
+                                    <option value="2015">2015</option>
+                                    <option value="2014">2014</option>
+                                    <option value="2013">2013</option>
+                                    <option value="2012">2012</option>
+                                    <option value="2011">2011</option>
+                                    <option value="2010">2010</option>
+                                    <option value="2009">2009</option>
+                                    <option value="2008">2008</option>
+                                    <option value="2007">2007</option>
+                                    <option value="2006">2006</option>
+                                    <option value="2005">2005</option>
+                                    <option value="2004">2004</option>
+                                    <option value="2003">2003</option>
+                                    <option value="2002">2002</option>
+                                    <option value="2001">2001</option>
+                                    <option value="2000">2000</option>
+                                    <option value="1999">1999</option>
+                                    <option value="1998">1998</option>
+                                    <option value="1997">1997</option>
+                                    <option value="1996">1996</option>
+                                    <option value="1995">1995</option>
+                                    <option value="1994">1994</option>
+                                    <option value="1993">1993</option>
+                                    <option value="1992">1992</option>
+                                    <option value="1991">1991</option>
+                                    <option value="1990">1990</option>
+                                    <option value="1989">1989</option>
+                                    <option value="1988">1988</option>
+                                    <option value="1987">1987</option>
+                                    <option value="1986">1986</option>
+                                    <option value="1985">1985</option>
+                                    <option value="1984">1984</option>
+                                    <option value="1983">1983</option>
+                                    <option value="1982">1982</option>
+                                    <option value="1981">1981</option>
+                                    <option value="1980">1980</option>
+                                    <option value="1979">1979</option>
+                                    <option value="1978">1978</option>
+                                    <option value="1977">1977</option>
+                                    <option value="1976">1976</option>
+                                    <option value="1975">1975</option>
+                                    <option value="1974">1974</option>
+                                    <option value="1973">1973</option>
+                                    <option value="1972">1972</option>
+                                    <option value="1971">1971</option>
+                                    <option value="1970">1970</option>
+                                    <option value="Other">Older/Other</option>
+                                </select>
+                            </div>
+                            
+                            <div id="carConditionField" class="form-field mb-6">
+                                <label class="block text-gray-700 font-medium mb-2" for="carCondition">What's wrong with the car?</label>
+                                <textarea id="carCondition" rows="3" class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-copper-300" placeholder="Describe the condition/issues with your car"></textarea>
                             </div>
                             
                             <div class="mb-6">
@@ -621,27 +1136,27 @@
             </div>
             
             <div class="max-w-3xl mx-auto">
-                <div class="mb-6 bg-white rounded-lg shadow-md p-6 reveal">
+                <div class="mb-6 bg-white rounded-lg shadow-md p-6 reveal faq-item">
                     <h3 class="text-xl font-bold mb-3">How quickly can you respond to a request?</h3>
                     <p>In most cases, we can provide same-day or next-day service. For emergency towing, we prioritize quick response times.</p>
                 </div>
                 
-                <div class="mb-6 bg-white rounded-lg shadow-md p-6 reveal">
+                <div class="mb-6 bg-white rounded-lg shadow-md p-6 reveal faq-item">
                     <h3 class="text-xl font-bold mb-3">Do you provide free estimates?</h3>
                     <p>Yes, we provide free estimates for all our services. Contact us by phone or fill out our form to get a quote.</p>
                 </div>
                 
-                <div class="mb-6 bg-white rounded-lg shadow-md p-6 reveal">
+                <div class="mb-6 bg-white rounded-lg shadow-md p-6 reveal faq-item">
                     <h3 class="text-xl font-bold mb-3">What areas do you service?</h3>
                     <p>We primarily serve the greater Athens area, including Madison, Commerce, and surrounding communities in Georgia.</p>
                 </div>
                 
-                <div class="mb-6 bg-white rounded-lg shadow-md p-6 reveal">
+                <div class="mb-6 bg-white rounded-lg shadow-md p-6 reveal faq-item">
                     <h3 class="text-xl font-bold mb-3">How much do you pay for junk cars?</h3>
                     <p>The amount we pay for junk cars varies depending on the vehicle's condition, make, model, and current scrap metal prices. Call us for a quick quote on your specific vehicle.</p>
                 </div>
                 
-                <div class="bg-white rounded-lg shadow-md p-6 reveal">
+                <div class="bg-white rounded-lg shadow-md p-6 reveal faq-item">
                     <h3 class="text-xl font-bold mb-3">What forms of payment do you accept?</h3>
                     <p>We accept cash and major credit/debit cards for our services. For junk car and parts purchases, we typically pay in cash.</p>
                 </div>
@@ -650,8 +1165,8 @@
     </section>
 
     <!-- Call to Action -->
-    <section class="py-16 copper-bg">
-        <div class="container mx-auto px-6 text-center">
+    <section class="py-16 cta-section">
+        <div class="container mx-auto px-6 text-center cta-content">
             <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">Ready to get rid of that junk?</h2>
             <p class="text-xl mb-8 text-white opacity-90">Professional, reliable service is just a phone call away.</p>
             <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
@@ -688,20 +1203,20 @@
                     <div>
                         <h4 class="text-lg font-bold mb-4">Services</h4>
                         <ul class="space-y-2">
-                            <li><a href="#services" class="text-gray-400 hover:text-white">Trash Removal</a></li>
-                            <li><a href="#services" class="text-gray-400 hover:text-white">Car Hauling</a></li>
-                            <li><a href="#services" class="text-gray-400 hover:text-white">Demolition Work</a></li>
-                            <li><a href="#services" class="text-gray-400 hover:text-white">General Labor</a></li>
+                            <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Trash Removal</a></li>
+                            <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Car Hauling</a></li>
+                            <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Demolition Work</a></li>
+                            <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">General Labor</a></li>
                         </ul>
                     </div>
                     
                     <div>
                         <h4 class="text-lg font-bold mb-4">Company</h4>
                         <ul class="space-y-2">
-                            <li><a href="#about" class="text-gray-400 hover:text-white">About Us</a></li>
-                            <li><a href="#testimonials" class="text-gray-400 hover:text-white">Testimonials</a></li>
-                            <li><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li>
-                            <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                            <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                            <li><a href="#testimonials" class="text-gray-400 hover:text-white transition-colors">Testimonials</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
                         </ul>
                     </div>
                     
@@ -710,11 +1225,11 @@
                         <ul class="space-y-2">
                             <li class="flex items-center">
                                 <i class="fas fa-phone-alt mr-2 text-sm"></i>
-                                <a href="tel:7069340080" class="text-gray-400 hover:text-white">(706) 934-0080</a>
+                                <a href="tel:7069340080" class="text-gray-400 hover:text-white transition-colors">(706) 934-0080</a>
                             </li>
                             <li class="flex items-center">
                                 <i class="fas fa-envelope mr-2 text-sm"></i>
-                                <a href="mailto:contact@junkpros.com" class="text-gray-400 hover:text-white">contact@junkpros.com</a>
+                                <a href="mailto:contact@junkpros.com" class="text-gray-400 hover:text-white transition-colors">contact@junkpros.com</a>
                             </li>
                             <li class="flex items-center">
                                 <i class="fas fa-map-marker-alt mr-2 text-sm"></i>
@@ -726,15 +1241,15 @@
             </div>
             
             <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row md:justify-between">
-                <p class="text-gray-400 mb-4 md:mb-0">© 2023 Junk Pros. All rights reserved.</p>
+                <p class="text-gray-400 mb-4 md:mb-0">© 2025 Junk Pros. All rights reserved.</p>
                 <div class="flex space-x-4">
-                    <a href="#" class="text-gray-400 hover:text-white">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
                         <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-white">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-white">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
                         <i class="fab fa-google"></i>
                     </a>
                 </div>
@@ -769,6 +1284,86 @@
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
+            });
+        });
+        
+        // Handle service selection from service buttons
+        function selectService(serviceValue) {
+            const serviceSelect = document.getElementById('service');
+            if (serviceSelect) {
+                serviceSelect.value = serviceValue;
+                
+                // Trigger the change event to show/hide car fields
+                const event = new Event('change');
+                serviceSelect.dispatchEvent(event);
+                
+                // Scroll to form
+                document.getElementById('contact').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        }
+        
+        // Toggle car information fields based on service selection
+        document.addEventListener('DOMContentLoaded', function() {
+            const serviceSelect = document.getElementById('service');
+            const carFields = [
+                document.getElementById('carBrandField'),
+                document.getElementById('carModelField'),
+                document.getElementById('carYearField'),
+                document.getElementById('carConditionField')
+            ];
+            
+            function toggleCarFields() {
+                const isJunkCar = serviceSelect.value === 'junkcar';
+                
+                carFields.forEach(field => {
+                    if (isJunkCar) {
+                        field.classList.add('active');
+                    } else {
+                        field.classList.remove('active');
+                    }
+                });
+            }
+            
+            if (serviceSelect) {
+                serviceSelect.addEventListener('change', toggleCarFields);
+                
+                // Initial check
+                toggleCarFields();
+            }
+            
+            // Form submission
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // Add form submission logic here
+                    alert('Thank you for contacting us! We will get back to you shortly.');
+                    contactForm.reset();
+                    toggleCarFields();
+                });
+            }
+            
+            // Mobile menu toggle
+            const menuButton = document.getElementById('menuButton');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuOverlay = document.getElementById('menuOverlay');
+            const closeMenu = document.getElementById('closeMenu');
+            
+            function toggleMobileMenu() {
+                mobileMenu.classList.toggle('active');
+                menuOverlay.classList.toggle('active');
+            }
+            
+            if (menuButton) menuButton.addEventListener('click', toggleMobileMenu);
+            if (closeMenu) closeMenu.addEventListener('click', toggleMobileMenu);
+            if (menuOverlay) menuOverlay.addEventListener('click', toggleMobileMenu);
+            
+            // Close mobile menu when clicking on a link
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a[href^="#"]');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', toggleMobileMenu);
             });
         });
     </script>
